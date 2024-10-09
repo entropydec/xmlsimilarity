@@ -1,0 +1,23 @@
+<hierarchy rotation="0">
+  <node index="0" text="" resource-id="" class="android.widget.FrameLayout" package="luankevinferreira.expenses" content-desc="" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" scrollable="false" long-clickable="false" password="false" selected="false" visible-to-user="true" bounds="[555,63][1070,441]">
+    <node index="0" text="" resource-id="" class="android.widget.FrameLayout" package="luankevinferreira.expenses" content-desc="" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" scrollable="false" long-clickable="false" password="false" selected="false" visible-to-user="true" bounds="[555,63][1070,441]">
+      <node index="0" text="" resource-id="" class="android.widget.ListView" package="luankevinferreira.expenses" content-desc="" checkable="false" checked="false" clickable="false" enabled="true" focusable="true" focused="true" scrollable="false" long-clickable="false" password="false" selected="false" visible-to-user="true" bounds="[555,63][1070,441]">
+        <node index="0" text="" resource-id="" class="android.widget.LinearLayout" package="luankevinferreira.expenses" content-desc="" checkable="false" checked="false" clickable="true" enabled="true" focusable="false" focused="false" scrollable="false" long-clickable="false" password="false" selected="false" visible-to-user="true" bounds="[555,63][1070,189]">
+          <node index="0" text="" resource-id="" class="android.widget.RelativeLayout" package="luankevinferreira.expenses" content-desc="" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" scrollable="false" long-clickable="false" password="false" selected="false" visible-to-user="true" bounds="[597,97][1028,154]">
+            <node index="0" text="* ALL *" resource-id="luankevinferreira.expenses:id/title" class="android.widget.TextView" package="luankevinferreira.expenses" content-desc="" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" scrollable="false" long-clickable="false" password="false" selected="false" visible-to-user="true" bounds="[597,97][1028,154]" />
+          </node>
+        </node>
+        <node index="1" text="" resource-id="" class="android.widget.LinearLayout" package="luankevinferreira.expenses" content-desc="" checkable="false" checked="false" clickable="true" enabled="true" focusable="false" focused="false" scrollable="false" long-clickable="false" password="false" selected="false" visible-to-user="true" bounds="[555,189][1070,315]">
+          <node index="0" text="" resource-id="" class="android.widget.RelativeLayout" package="luankevinferreira.expenses" content-desc="" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" scrollable="false" long-clickable="false" password="false" selected="false" visible-to-user="true" bounds="[597,223][1028,280]">
+            <node index="0" text="Transportation" resource-id="luankevinferreira.expenses:id/title" class="android.widget.TextView" package="luankevinferreira.expenses" content-desc="" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" scrollable="false" long-clickable="false" password="false" selected="false" visible-to-user="true" bounds="[597,223][1028,280]" />
+          </node>
+        </node>
+        <node index="2" text="" resource-id="" class="android.widget.LinearLayout" package="luankevinferreira.expenses" content-desc="" checkable="false" checked="false" clickable="true" enabled="true" focusable="false" focused="false" scrollable="false" long-clickable="false" password="false" selected="false" visible-to-user="true" bounds="[555,315][1070,441]">
+          <node index="0" text="" resource-id="" class="android.widget.RelativeLayout" package="luankevinferreira.expenses" content-desc="" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" scrollable="false" long-clickable="false" password="false" selected="false" visible-to-user="true" bounds="[597,349][1028,406]">
+            <node index="0" text="Clothes" resource-id="luankevinferreira.expenses:id/title" class="android.widget.TextView" package="luankevinferreira.expenses" content-desc="" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" scrollable="false" long-clickable="false" password="false" selected="false" visible-to-user="true" bounds="[597,349][1028,406]" />
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  </hierarchy>

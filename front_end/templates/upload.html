@@ -1,0 +1,173 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container" style="max-width: 800px; ">
+</div>
+<!-- 这是上端的上传标识 -->
+<div>
+	<h2 class="page-header">
+		上传界面
+	</h2>
+	<div style="color: darkgray;">
+		<h5>
+			您需要在此界面上传两个需要比较的xml文件以及其对应的界面截图方便进行可视化标注
+		</h5>
+	</div>
+</div>
+<style type="text/css">
+	.myinput { border: none; }
+</style>
+<script>
+	var checked = false;
+	function getExtension(name) {
+		return name.substring(name.lastIndexOf(".") + 1)
+	}
+
+	// 检查文件格式正确性
+	function check() {
+		const xml1 = document.getElementById('filename1').value;
+    	const img1 = document.getElementById('filename2').value;
+    	const xml2 = document.getElementById('filename3').value;
+    	const img2 = document.getElementById('filename4').value;
+    	console.log(xml1, img1, xml2, img2);
+
+		if (xml1 == null || xml1 == "" || img1 == null || img1 == "" || xml2 == null || xml2 == "" || img2 == null || img2 == "") {
+			alert("请确保文件都已正确提交！")
+		} 
+		else {
+			ext1 = getExtension(xml1);
+      		ext2 = getExtension(img1);
+      		ext3 = getExtension(xml2);
+			ext4 = getExtension(img2);
+      		console.log(ext1, ext2, ext3, ext4);
+      		if (ext1 == "xml" && ext2 == "png" && ext3 == "xml" && ext4 == "png") {
+				checked = true;
+				alert("文件符合要求，可以点击上传按钮！")
+			} 
+			else {
+				alert("文件格式错误，请确认后重新提交！")
+			}
+		}
+	}
+
+	function click1(){
+		document.getElementById('xml1').click();
+	}
+	function click2(){
+		document.getElementById('img1').click();
+	}
+	function click3(){
+		document.getElementById('xml2').click();
+	}
+	function click4(){
+		document.getElementById('img2').click();
+	}
+
+	// 提取路径中的文件名
+	function basename(str) {
+  		var idx = str.lastIndexOf('/')
+  		idx = idx > -1 ? idx : str.lastIndexOf('\\')
+  		if (idx < 0) {
+    		return str
+  		}
+  		return str.substring(idx + 1);
+	}
+	// 将文件名显示在文本框中
+	function handeFile(id1, id2){
+		var file = document.getElementById(id1);
+		var filename = document.getElementById(id2);
+		var basefilename = basename(file.value)
+		filename.value = basefilename;
+		// console.log(basefilename);
+	}
+
+	// 提交时检查正确性
+	function ischecked(){
+		if(checked == true){
+			return true;
+		}
+		else{
+			alert("请先进行格式合法性检查！")
+			return false;
+		}
+	}
+</script>
+<!-- 这是中心的上传文件块 -->
+<div class="container" style=" height: 450px;
+border-radius: 10px;
+max-width: 800px; 
+background-color: rgba(238, 238, 238);
+position: absolute;   
+top: 24%;
+left: 15%;   
+right: 35%;">
+	<!-- 检查合法性按钮 -->
+	<div style="position: relative; left: 69%;">
+		<button type="button" class="btn btn-info" onclick="check()">
+			检查合法性
+		</button>
+	</div>
+	<form class="form-inline" action="http://localhost:5001/waiting" method="POST" enctype="multipart/form-data" style="height: 500px;" onsubmit="return ischecked()">
+		<!-- 按钮1 -->
+		<div style="position: relative; left: 10%; top: 10%;">
+			<div class="input-group">
+				<input type="text" class="form-control" id="filename1" onclick="click1()" style="width: 250px" readonly />
+				<span id="upload1" class="btn btn-info input-group-addon" onclick="click1()">
+					<i class="glyphicon glyphicon-cloud-upload">
+					</i>
+					上传
+				</span>
+			</div>
+			<input type="file" class="form-control" id="xml1" style="display:none" name="xml1" onchange="handeFile('xml1', 'filename1')">
+			<p class="help-block">
+				上传xml1文件
+			</p>
+		</div>
+		<!-- 按钮2 -->
+		<div style="position: relative; left: 10%; top: 14%;">
+			<div class="input-group">
+				<input type="text" class="form-control" id="filename2" onclick="click2()" style="width: 250px" readonly />
+				<span id="upload2" class="btn btn-info input-group-addon" onclick="click2()">
+					<i class="glyphicon glyphicon-cloud-upload">
+					</i>
+					上传
+				</span>
+			</div>
+			<input type="file" class="form-control" id="img1" style="display:none" name="img1" onchange="handeFile('img1', 'filename2')">
+			<p class="help-block">
+				上传image1文件
+			</p>
+		</div>
+		<!-- 按钮3 -->
+		<div style="position: relative; left: 10%; top: 18%;">
+			<div class="input-group">
+				<input type="text" class="form-control" id="filename3" onclick="click3()" style="width: 250px" readonly />
+				<span id="upload2" class="btn btn-info input-group-addon" onclick="click3()">
+					<i class="glyphicon glyphicon-cloud-upload"></i>
+					上传
+				</span>
+			</div>
+			<input type="file" class="form-control" id="xml2" style="display:none" name="xml2" onchange="handeFile('xml2', 'filename3')">
+			<p class="help-block">
+				上传xml2文件
+			</p>
+		</div>
+		<!-- 按钮4 -->
+		<div style="position: relative; left: 10%; top: 22%;">
+			<div class="input-group">
+				<input type="text" class="form-control" id="filename4" onclick="click4()" style="width: 250px" readonly />
+				<span id="upload2" class="btn btn-info input-group-addon" onclick="click4()">
+					<i class="glyphicon glyphicon-cloud-upload"></i>
+					上传
+				</span>
+			</div>
+			<input type="file" class="form-control" id="img2" style="display:none" name="img2" onchange="handeFile('img2', 'filename4')">
+			<p class="help-block">
+				上传image2文件
+			</p>
+		</div>
+		<!-- 提交 -->
+		<div style="position: relative; left: 72%; top: 30%;">
+			<input type="submit" class="btn btn-success" style="width: 150px;" value="提交"/>
+		</div>
+	</form>
+</div>
+{% endblock content %}

@@ -1,0 +1,10 @@
+box-frame
+{
+    max-width: 3000px; 
+    height: 500px;
+    background-color: blanchedalmond;
+    position: absolute;   
+    top: 20%;   
+    left: 30%;
+    right: 15%;
+}

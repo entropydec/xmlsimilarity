@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% from 'bootstrap/form.html' import render_form, render_field, render_form_row %}
+{% from 'bootstrap/table.html' import render_table %}
+
+{% block content %}
+
+<div class="container" style="max-width: 1100px; margin: 0 auto;">
+
+  <!-- Tittle -->
+  <h2 class="page-header">计算中，请等待...</h2>
+  <!-- Main component for a primary marketing message or call to action -->
+
+  <script type="text/javascript">
+    var result_url = "http://127.0.0.1:5001/result"
+
+    function getRealPath(){
+      var curWwwPath = window.document.location.href;
+      var pathName = window.document.location.pathname;
+      var localhostPath=curWwwPath.substring(0, curWwwPath.indexOf(pathName));
+      var projectName = pathName.substring(0,pathName.substr(1).indexOf('/')+1);
+      return localhostPath + projectName;
+    }
+
+    function getSimilar() {
+      console.log(getRealPath());
+      const repair_url = "http://127.0.0.1:12300/calculate";
+      // 路由传参的参数
+      console.log(repair_url)
+
+      const xmlhttp = new XMLHttpRequest();
+      // get方法带参数是将参数写在url里面传过去给后端
+      xmlhttp.open("GET", repair_url, true);
+      xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+      xmlhttp.send();
+
+      // readyState == 4 为请求完成，status == 200为请求成功返回的状态
+      xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState === 4) {
+          if (xmlhttp.status === 200) {
+            console.log(xmlhttp.responseText);
+            var result = JSON.parse(xmlhttp.responseText)
+            var sim = result["sim"]
+            console.log(sim);
+            result_url = "http://127.0.0.1:5001/result?sim=" + sim;
+          } 
+          else {
+            document.getElementById("info").innerHTML = "脚本修复失败！"
+            result_url = "http://127.0.0.1:5001/result?sim=0.0";
+          }
+          location.href = result_url
+          // TODO: 等待函数
+          // setTimeout(function(){
+          //   location.href = result_url
+          // },10000);
+          
+        }
+      }
+    }
+    window.onload = getSimilar;
+  </script>
+
+  <!-- TODO  -->
+  <div class="row" style="display:flex; justify-content:space-around;">
+
+    <!-- 主界面 -->
+    <div class="col-lg-9 jumbotron" style=" height: 530px;
+      border-radius: 10px;
+      max-width: 700px; 
+      background-color: rgba(238, 238, 238);
+      position: absolute;   
+      top: 20%;
+      left: 15%;   
+      right: 35%;">
+      <div class="loading">
+        <img src="{{ url_for('static', filename='img/wait1.gif')}}" style="width: 500px; height: 250px;">
+        <img src="{{ url_for('static', filename='img/wait2.gif')}}" style="width: 500px; height: 200px;">
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% endblock content %}

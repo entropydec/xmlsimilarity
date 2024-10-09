@@ -1,0 +1,10 @@
+[
+{"date":"2021-07-13","front":"测试","back":"测试"},
+{"date":"2021-05-23","front":"解决服务器的相关问题，尝试前后端合并。","back":"解决服务器的相关问题，尝试前后端合并。"},
+{"date":"2021-05-16","front":"尝试将代码部署在服务器上。","back":"尝试将代码部署在服务器上。"},
+{"date":"2021-05-09","front":"尝试在服务器端运行代码。","back":"配置服务器端代码运行所需环境，并尝试在服务器端运行代码；继续测试修改核心代码。"},
+{"date":"2021-05-02","front":"React框架学习与应用。","back":"完成了脚本的基础修复，保证脚本使用所给的框架修复工具可以完成旧版本的修复;在修复代码中添加功能，实现修复之后可以输出新的py脚本。"},
+{"date":"2021-04-25","front":"完成SysLog、SuperGenPass、ATimeTracker、Pedometer和OI-FileManager脚本的修改。","back":"完成TasksAstridToDoListClone、websms、RemoteKeyboard、Ringdroid、Vudroid、AutoAnswerCallback、BarcodeScanner、KeePassDroid、NotePad和GhostCommanderFileManagere脚本的修改。"},
+{"date":"2021-04-18","front":"根据bootstrap模板编写html文件base.html（上边栏）；完成界面布局的设计；编写主页面、运行配置界面、运行结果界面、等待界面、上传界面、文档界面的基本内容，并对其他界面进行统一风格修改。","back":"完成运行环境的配置；尝试运行Py代码。"},
+{"date":"2021-04-10","front":"完成需求文档，包括产品的前景、功能、 用户类、设计和实现上的限制、假设和依赖等；","back":"完成需求文档，包括产品的前景、功能、 用户类、设计和实现上的限制、假设和依赖等；"}
+]

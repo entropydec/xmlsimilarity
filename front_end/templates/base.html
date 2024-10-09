@@ -1,0 +1,128 @@
+{% from 'bootstrap/nav.html' import render_nav_item %}
+{% from 'bootstrap/utils.html' import render_messages %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <meta name="description" content="脚本修复平台">
+  <meta name="author" content="Script-Repairing Group">
+  <link rel="icon" href="../static/favicon.ico">
+  <link rel="stylesheet" href="/../static/dist/css/index.css">
+
+  <title>XML文件相似度的可视化展示平台</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="../static/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+  <link href="../static/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="../static/dashboard.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <!--link href="../static/blog.css" rel="stylesheet" -->
+
+  <!-- Custom styles for this template -->
+  <link href="../static/sticky-footer.css" rel="stylesheet">
+
+  <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+  <!--[if lt IE 9]>
+    <script src="../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+  <script src="../static/assets/js/ie-emulation-modes-warning.js"></script>
+
+</head>
+
+<body>
+  <style>
+    ul li ul {
+      /* position: absolute; */
+      top: 100px;
+      left: 0;
+      display: none;
+    }
+
+    ul {
+      background: rgb(30, 30, 30)
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      text-decoration: none;
+    }
+
+    #nav {
+      width: 500px;
+      height: 40px;
+      background: #ccc;
+      margin: 0 auto;
+    }
+
+    ul li ul li {
+      float: none;
+    }
+
+    /* ul li {
+      float: left;
+      display: block;
+      height: 40px;
+      line-height: 40px;
+      padding: 0 20px;
+      position: relative;
+    } */
+
+    ul li:hover ul {
+      display: block;
+    }
+  </style>
+
+
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+          aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <a class="navbar-brand" style="left: 146px;
+                top: 14px;
+                width: 400px;
+                height: 36px;
+                color: rgba(255, 255, 255, 100);
+                font-size: 24px;
+                text-align: left;
+                font-family: SourceHanSansSC-regular,serif;">XML文件相似度的可视化展示平台</a>
+        <a class="navbar-brand" href={{ url_for('upload') }}>相似度计算</a>
+      </div>
+    </div>
+  </nav>
+
+
+  <main class="container" style="max-width: 1100px; margin: 0 auto;">
+    {{ render_messages(container=True, dismissible=True) }}
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- Bootstrap core JavaScript
+================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script>
+    window.jQuery || document.write('<script src="../static/assets/js/vendor/jquery.min.js"><\/script>')
+  </script>
+  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+  <script src="../static/assets/js/ie10-viewport-bug-workaround.js"></script>
+</body>
+
+</html>

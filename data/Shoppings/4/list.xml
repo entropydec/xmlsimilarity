@@ -1,0 +1,10 @@
+<hierarchy rotation="0">
+  <node index="0" text="" resource-id="" class="android.widget.FrameLayout" package="org.openintents.shopping" content-desc="" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" scrollable="false" long-clickable="false" password="false" selected="false" visible-to-user="true" bounds="[0,210][954,462]">
+    <node index="0" text="" resource-id="" class="android.widget.FrameLayout" package="org.openintents.shopping" content-desc="" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" scrollable="false" long-clickable="false" password="false" selected="false" visible-to-user="true" bounds="[0,210][954,462]">
+      <node index="0" text="" resource-id="" class="android.widget.ListView" package="org.openintents.shopping" content-desc="" checkable="false" checked="false" clickable="false" enabled="true" focusable="true" focused="true" scrollable="false" long-clickable="false" password="false" selected="false" visible-to-user="true" bounds="[0,210][954,462]">
+        <node index="0" text="list1" resource-id="android:id/text1" class="android.widget.CheckedTextView" package="org.openintents.shopping" content-desc="" checkable="true" checked="true" clickable="true" enabled="true" focusable="false" focused="false" scrollable="false" long-clickable="false" password="false" selected="false" visible-to-user="true" bounds="[0,210][954,336]" />
+        <node index="1" text="My shopping list" resource-id="android:id/text1" class="android.widget.CheckedTextView" package="org.openintents.shopping" content-desc="" checkable="true" checked="false" clickable="true" enabled="true" focusable="false" focused="false" scrollable="false" long-clickable="false" password="false" selected="false" visible-to-user="true" bounds="[0,336][954,462]" />
+      </node>
+    </node>
+  </node>
+  </hierarchy>

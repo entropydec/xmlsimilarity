@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+{% from 'bootstrap/table.html' import render_table %}
+
+{% block content %}
+<div class="container" style="max-width: 1100px; margin: 0 auto;">
+
+  <!-- Tittle -->
+  <h2 class="page-header" id="header"></h2>
+  <input id='sim' type="hidden" value={{sim}} />
+
+  <!-- Main component for a primary marketing message or call to action -->
+
+  <div class="row" style="display:flex; justify-content:space-around;">
+
+    <!-- 左边主界面 -->
+    <div id = "resultlist" class="col-lg-9 jumbotron " style=" height: 550px;
+                border-radius: 10px;
+                max-width: 450px; 
+                background-color: rgba(238, 238, 238);
+                position: absolute;   
+                top: 20%;
+                left: 13%;   
+                right: 35%;
+                overflow:scroll;">
+      <table class="table table-bordered" id="tableList">
+      </table>
+    </div>
+
+
+    <!-- 右边栏 -->
+    <div class="col-lg-3" style="margin: 0 auto;
+                max-width: 400px;
+                height: 400px;
+                left: 150px;">
+      <img src="{{ url_for('static', filename='img/res.png')}}" style="width: 650px; height: 550px;">
+
+      </div>
+      <!-- </form> -->
+
+
+      <!-- 返回全部修复记录 -->
+      <div style="text-align:center; margin-bottom: 30px;">
+        <button type="button" style=" height: 60px;" class="btn btn-success btn-lg btn-block" onclick="repairResult()">查看历史修复记录</button>
+    </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    // 展示修复结果
+    document.getElementById("header").innerHTML = "相似度为: " + document.getElementById("sim").value + "%"
+    console.log(document.getElementById("header").innerHTML)
+    // var container = document.getElementById("resultlist");
+    var json_table = document.getElementById("tableList");
+    console.log(json_table);
+    var result = [];
+    function getList() {
+      console.log("getList");
+      const repair_url = "http://127.0.0.1:12300/getList";
+      const xmlhttp = new XMLHttpRequest();
+      // get方法带参数是将参数写在url里面传过去给后端
+      xmlhttp.open("GET", repair_url, true);
+      xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+      xmlhttp.send();
+
+      // readyState == 4 为请求完成，status == 200为请求成功返回的状态
+      xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState === 4) {
+          if (xmlhttp.status === 200) {
+            // console.log(xmlhttp.responseText);
+            result = JSON.parse(xmlhttp.responseText)
+            console.log(result);
+            showResult();
+            return result;
+          } 
+        }
+      }
+    }
+
+    function showResult() {
+      console.log("showResult");
+      json_table.innerHTML = ""; 
+      var json_tr = document.createElement("tr");
+      //表头
+      for(let i=0; i<2; i++ ) {
+        var json_th = document.createElement("th");
+        //获取键名
+        var th_txt;
+        if(i == 0) {
+          th_txt = document.createTextNode("左侧节点class");
+        }
+        else if(i == 1){
+          th_txt = document.createTextNode("右侧节点class");
+        }
+        json_th.appendChild(th_txt);
+        json_tr.appendChild(json_th);
+        json_table.appendChild(json_tr);
+      }
+      
+      //结果
+      for(var i = 0; i < result.length; i++){
+        var json_tr = document.createElement("tr");
+        //左侧
+        var json_td = document.createElement("td");
+        var td_txt = document.createTextNode(result[i]["src"]);
+        json_td.style.color = 'MediumTurquoise';
+        json_td.appendChild(td_txt);
+        json_tr.appendChild(json_td);
+        json_table.appendChild(json_tr);
+        //右侧
+        var json_td1 = document.createElement("td");
+        var td_txt = document.createTextNode(result[i]["dst"]);
+        json_td1.style.color = "Green";
+        json_td1.appendChild(td_txt);
+        json_tr.appendChild(json_td1);
+        json_table.appendChild(json_tr);
+        // console.log(json_table);
+      }
+      json_table.style.width = "500px";
+      json_table.style.fontSize = "18px";
+    }
+
+    // 打开页面自动调用
+    window.onload = getList;
+  </script>
+</div>
+
+{% endblock content %}
